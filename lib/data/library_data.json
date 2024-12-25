@@ -1,0 +1,40 @@
+{
+    "library": {
+        "usersNum": 4,
+        "booksNum": 2,
+        "books": [
+            {
+                "bookID": "6625",
+                "bookTitle": "sufferAllTime",
+                "isBorrowed": false
+            },
+            {
+                "bookID": "2285",
+                "bookTitle": "money is power",
+                "isBorrowed": false
+            }
+        ],
+        "users": [
+            {
+                "userID": "102030",
+                "userType": 0,
+                "userName": "Mahmoud Sobhi"
+            },
+            {
+                "userID": "7451",
+                "userType": 1,
+                "userName": "mohamed"
+            },
+            {
+                "userID": "5349",
+                "userType": 1,
+                "userName": "ali"
+            },
+            {
+                "userID": "6852",
+                "userType": 1,
+                "userName": "khaled"
+            }
+        ]
+    }
+}

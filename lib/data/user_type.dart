@@ -1,0 +1,1 @@
+enum LibraryUserType {admin,customer}
