@@ -22,9 +22,24 @@ class LibraryRepoImpl implements LibraryRepo {
   }
 
   @override
-  Future<List<BookModel>> searchForBooks(String keyWord) {
-    // TODO: implement searchForBooks
-    throw UnimplementedError();
+  Future<List<BookModel>> searchForBooks(String keyWord) async {
+    try {
+      Map<String, dynamic>? data = await readJson();
+      if (data != null) {
+        List books = data['library']['books'];
+        List<BookModel> list = [];
+        for (var item in books) {
+          list.add(BookModel.fromJson(item));
+        }
+        return list
+            .where((item) => item.getBookTitle.toLowerCase().contains(keyWord))
+            .toList();
+      }
+      return [];
+    } catch (e) {
+      print(e.toString());
+      return [];
+    }
   }
 
   Future<Map<String, dynamic>?> readJson() async {

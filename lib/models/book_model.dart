@@ -26,6 +26,7 @@ class BookModel {
   }
 
   // getter methods for each attribute
+
   String get getBookID => _bookID;
   String get getBookTitle => _bookTitle;
   bool get checkBookStatus => _isBorrowed;
@@ -35,6 +36,10 @@ class BookModel {
     print("book title is :$getBookTitle");
     print("book ID is :$getBookID");
     print('book is ${checkBookStatus ? "borrowed" : "available"}');
+    if (_borrowerUser != null) {
+      print(
+          "borrower by ${_borrowerUser!.getUserName} -- whose id is ${_borrowerUser!.getUserId}");
+    }
   }
 
   Map<String, dynamic> toJson() => {
@@ -54,7 +59,7 @@ class BookModel {
         bookTitle: json['bookTitle'],
         isBorrowed: json['isBorrowed'],
         borrower: json['borrowerInfo'] != null
-            ? UserModel.fromJson(json['borrowerInfo'],userIndex: 1)
+            ? UserModel.fromJson(json['borrowerInfo'], userIndex: 1)
             : null);
   }
 }
