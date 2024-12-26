@@ -1,34 +1,33 @@
 import 'dart:io';
 
-import 'package:library_system/features/customer/prepare_before_borrow.dart';
+import 'package:library_system/features/customer/prepare_before_retrun.dart';
 import 'package:library_system/models/book_model.dart';
 import 'package:library_system/models/user_model.dart';
 import 'package:library_system/repos/library_repo_impl.dart';
 
-Future<void> borrowBook(
+Future<void> returnBook(
     {required LibraryRepoImpl libraryRepoImpl,
     required UserModel userModel}) async {
   bool isRebeat = true;
   do {
     if (userModel.getBorrowedBooks() != null &&
-        userModel.getBorrowedBooks()!.length >= 2) {
-      print("you can't borrow more books because you have 2 or more borrowed");
+        userModel.getBorrowedBooks()!.isEmpty) {
+      print("you can't return books because you have no borrowed");
       isRebeat = false;
     } else {
-      List<BookModel> booksList =
-          await libraryRepoImpl.searchForBooks(enableFilter: true);
+      List<BookModel> booksList = userModel.getBorrowedBooks() ?? [];
       if (booksList.isNotEmpty) {
-        print("Here is all available books to borrow");
+        print("Here is all borrowed books to return");
         for (int i = 0; i < booksList.length; i++) {
           print('${i + 1}-${booksList[i].getBookTitle}' '\n');
         }
         print(
-            "Please Pick book number that you want to borrow, or enter q to back");
+            "Please Pick book number do you want to return, or enter q to back");
         String? input = stdin.readLineSync();
         if (input != null && input.toLowerCase() == 'q') {
           isRebeat = false;
         } else {
-          isRebeat = await prepareModelsBeforeBorrowBook(
+          isRebeat = await prepareModelsBeforeReturnBook(
               input, booksList, userModel, libraryRepoImpl, isRebeat);
         }
       } else {

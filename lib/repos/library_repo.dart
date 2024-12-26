@@ -9,5 +9,5 @@ abstract class LibraryRepo {
   Future<void>addNewBook(Map<String,dynamic>json);
   Future<void>addNewUser(Map<String,dynamic>json);
   Future<void>borrowBook({required UserModel userModel,required BookModel borrowedBook});
-  Future<void>returnBook(Map<String,dynamic>json);
+  Future<void>returnBook({required String userID, required BookModel borrowedBook});
 }

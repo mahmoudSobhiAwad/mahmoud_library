@@ -14,7 +14,7 @@ Future<void> addNewUser(LibraryRepo libraryRepoImpl) async {
     if (userName != null &&
         userName.toLowerCase() != 'q' &&
         userName.trim().isNotEmpty) {
-      print("Enter User Type \n 1- Admin\n 2- Customer");
+      print("select user type by enter number \n 1- Admin\n 2- Customer");
       String? typeIndex = stdin.readLineSync();
       if (typeIndex != null && typeIndex.trim().isNotEmpty) {
         int index = int.tryParse(typeIndex) ?? -1;

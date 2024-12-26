@@ -9,6 +9,7 @@ void showCustomerPage() async {
   int loginCounter = 0;
   UserModel? userModel;
   LibraryRepoImpl libraryRepoImpl = LibraryRepoImpl();
+  await libraryRepoImpl.initialize();
   do {
     String? input = stdin.readLineSync();
     if (input != null) {
@@ -25,4 +26,3 @@ void showCustomerPage() async {
   } while (loginCounter < 4 && userModel == null);
   await operationForCustomer(userModel, libraryRepoImpl);
 }
-

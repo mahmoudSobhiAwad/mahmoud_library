@@ -20,7 +20,11 @@ class UserModel {
   // but becuase list may changed we make setter for it.
   set assignBorrowedBooks(BookModel borrowedBooks) {
     if (_borrowedBooks != null) {
-      _borrowedBooks!.add(BookModel(bookID: borrowedBooks.getBookID, bookTitle: borrowedBooks.getBookTitle));
+      _borrowedBooks!.add(BookModel(
+        bookID: borrowedBooks.getBookID,
+        bookTitle: borrowedBooks.getBookTitle,
+        isBorrowed: true,
+      ));
     }
   }
 
@@ -33,7 +37,7 @@ class UserModel {
   void displayInfo() {
     print(
         "name is $_userName -- user type is ${_userType.index == 0 ? "admin" : "customer"}  -- userId is $_userID");
-    if (_borrowedBooks != null) {
+    if (_borrowedBooks != null && _borrowedBooks!.isNotEmpty) {
       print("the borrowed books are");
       for (var item in _borrowedBooks!) {
         print(
@@ -53,10 +57,10 @@ class UserModel {
 
   factory UserModel.fromJson(Map<String, dynamic> json, {int? userIndex}) {
     var booksList = json['borrowedBooks'] as List<dynamic>? ?? [];
-    
-    List<BookModel> books =
-        booksList.map((item) => BookModel.fromJson(item,isFromCustomer: true)).toList();
 
+    List<BookModel> books = booksList
+        .map((item) => BookModel.fromJson(item, isFromCustomer: true))
+        .toList();
     return UserModel(
       userId: json['userID'],
       userName: json['userName'],

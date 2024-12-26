@@ -10,6 +10,7 @@ void showAdminPage() async {
   int loginCounter = 0;
   UserModel? userModel;
   LibraryRepoImpl libraryRepoImpl = LibraryRepoImpl();
+  await libraryRepoImpl.initialize();
   do {
     String? input = stdin.readLineSync();
     if (input != null) {

@@ -25,7 +25,7 @@ class BookModel {
     _isBorrowed = status;
   }
 
-  set setUserInfo(UserModel model) {
+  set setUserInfo(UserModel? model) {
     _borrowerUser = model;
   }
 
