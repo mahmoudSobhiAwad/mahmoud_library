@@ -22,9 +22,9 @@ Future<void> addNewUser(LibraryRepo libraryRepoImpl) async {
           await libraryRepoImpl.addNewUser(UserModel(
                   userId: generateUniqeID(),
                   userName: userName,
-                  userType: LibraryUserType.values[index],
+                  userType: LibraryUserType.values[index-1],
                   borrowedBox: index == 1 ? null : [])
-              .toJosn());
+              .toJson());
           print(
               "Successfully add new user name is $userName as ${index == 1 ? "admin" : "customer"}");
           repeat = false;

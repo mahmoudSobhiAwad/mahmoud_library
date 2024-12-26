@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:library_system/features/admin/admin_page.dart';
-import 'package:library_system/features/customer_page.dart';
+import 'package:library_system/features/customer/customer_page.dart';
 
 void main(List<String> arguments) {
   int roleIndex = -1;

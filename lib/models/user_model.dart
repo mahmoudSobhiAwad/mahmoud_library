@@ -18,8 +18,10 @@ class UserModel {
   }
   // we assign the values already in constructor
   // but becuase list may changed we make setter for it.
-  set assignBorrowedBooks(List<BookModel> borrowedBooks) {
-    _borrowedBooks?.addAll(borrowedBooks);
+  set assignBorrowedBooks(BookModel borrowedBooks) {
+    if (_borrowedBooks != null) {
+      _borrowedBooks!.add(BookModel(bookID: borrowedBooks.getBookID, bookTitle: borrowedBooks.getBookTitle));
+    }
   }
 
   // getter method for all user attributes
@@ -40,7 +42,7 @@ class UserModel {
     }
   }
 
-  Map<String, dynamic> toJosn() {
+  Map<String, dynamic> toJson() {
     return {
       "userID": _userID,
       "userType": _userType.index,
@@ -49,12 +51,17 @@ class UserModel {
     };
   }
 
-  factory UserModel.fromJson(Map<String, dynamic> json,{int?userIndex}) {
+  factory UserModel.fromJson(Map<String, dynamic> json, {int? userIndex}) {
+    var booksList = json['borrowedBooks'] as List<dynamic>? ?? [];
+    
+    List<BookModel> books =
+        booksList.map((item) => BookModel.fromJson(item,isFromCustomer: true)).toList();
+
     return UserModel(
       userId: json['userID'],
       userName: json['userName'],
-      userType: LibraryUserType.values[userIndex?? json['userType']],
-      borrowedBox: json['borrowedBooks'],
+      userType: LibraryUserType.values[userIndex ?? json['userType']],
+      borrowedBox: json['borrowedBooks'] != null ? books : null,
     );
   }
 }
