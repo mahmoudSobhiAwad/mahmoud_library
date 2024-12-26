@@ -45,6 +45,8 @@ class BookModel {
     }
   }
 
+  //decoding data to insert into file
+
   Map<String, dynamic> toJson() => {
         "bookID": _bookID,
         "bookTitle": _bookTitle,
@@ -55,6 +57,7 @@ class BookModel {
             "userID": _borrowerUser!.getUserId,
           },
       };
+  //encoding data from file to view as class model
 
   factory BookModel.fromJson(Map<String, dynamic> json,
       {bool isFromCustomer = false}) {

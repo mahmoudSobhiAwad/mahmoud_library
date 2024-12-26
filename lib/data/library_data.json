@@ -1,1 +1,36 @@
-{"library":{"usersNum":3,"booksNum":2,"books":[{"bookID":"6625","bookTitle":"money is the power","isBorrowed":false},{"bookID":"2285","bookTitle":"All is Fine","isBorrowed":false}],"users":[{"userID":"102030","userType":0,"userName":"Mahmoud Sobhi"},{"userID":"0562","userType":1,"userName":"mostafa","borrowedBooks":[]},{"userID":"9918","userType":0,"userName":"sara"}]}}
+{
+    "library": {
+        "usersNum": 3,
+        "booksNum": 2,
+        "books": [
+            {
+                "bookID": "6625",
+                "bookTitle": "money is the power",
+                "isBorrowed": false
+            },
+            {
+                "bookID": "2285",
+                "bookTitle": "All is Fine",
+                "isBorrowed": false
+            }
+        ],
+        "users": [
+            {
+                "userID": "102030",
+                "userType": 0,
+                "userName": "Mahmoud Sobhi"
+            },
+            {
+                "userID": "0562",
+                "userType": 1,
+                "userName": "mostafa",
+                "borrowedBooks": []
+            },
+            {
+                "userID": "9918",
+                "userType": 0,
+                "userName": "sara"
+            }
+        ]
+    }
+}

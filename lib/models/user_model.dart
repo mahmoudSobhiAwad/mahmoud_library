@@ -32,8 +32,11 @@ class UserModel {
   String get getUserName => _userName;
   String get getUserId => _userID;
   LibraryUserType get getUserType => _userType;
-
   List<BookModel>? getBorrowedBooks() => _borrowedBooks;
+
+
+  //display user info name ,type ,id
+  //display also if he is custemer the borrowed books with name and id 
   void displayInfo() {
     print(
         "name is $_userName -- user type is ${_userType.index == 0 ? "admin" : "customer"}  -- userId is $_userID");
@@ -46,6 +49,8 @@ class UserModel {
     }
   }
 
+  //decoding data to insert into file 
+
   Map<String, dynamic> toJson() {
     return {
       "userID": _userID,
@@ -54,7 +59,7 @@ class UserModel {
       if (_borrowedBooks != null) "borrowedBooks": _borrowedBooks,
     };
   }
-
+//encoding data from file to view as class model 
   factory UserModel.fromJson(Map<String, dynamic> json, {int? userIndex}) {
     var booksList = json['borrowedBooks'] as List<dynamic>? ?? [];
 

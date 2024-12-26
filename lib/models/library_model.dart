@@ -10,6 +10,8 @@ class LibrarySystem {
     _booksList.addAll(booksList);
     _usersList.addAll(userList);
   }
+//encoding data from file to view as class model
+
   factory LibrarySystem.fromJson(Map<String, dynamic>? json) {
     List<BookModel> books = [];
     List<UserModel> users = [];
@@ -27,6 +29,7 @@ class LibrarySystem {
       userList: users,
     );
   }
+  //display function to see library data
   void displayAllSystem() {
     print("Mahmoud's Library");
     if (_booksList.isNotEmpty) {
